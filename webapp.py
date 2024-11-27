@@ -91,7 +91,6 @@ if st.checkbox('Show Code'):
         acc = accuracy_score(y_test, y_pred)
 
 
-
 # Call the third function
 clf = get_classifier(classifier_name, params)
 
