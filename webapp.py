@@ -74,6 +74,24 @@ def get_classifier(classifier_name, params):
         clf = clf = RandomForestClassifier(n_estimators=params['n_estimators'], 
                         max_depth=params['max_depth'], random_state=1234)
     return clf
+
+if st.checkbox('Show Code'):
+    with st.echo():
+        # Call the third function
+        clf = get_classifier(classifier_name, params)
+
+        # Now split the dataset into train data and test data
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.02, random_state=1234)
+
+        #Now fit the classifier to the training data
+        clf.fit(X_train, y_train)
+        y_pred = clf.predict(X_test)
+
+        # Now to check the accuracy of model apply accuracy score matrics
+        acc = accuracy_score(y_test, y_pred)
+
+
+
 # Call the third function
 clf = get_classifier(classifier_name, params)
 
