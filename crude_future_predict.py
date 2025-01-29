@@ -25,11 +25,8 @@ def load_data():
     cols_to_convert = ['Price', 'Open', 'High', 'Low']
     df[cols_to_convert] = df[cols_to_convert].apply(pd.to_numeric, errors='coerce')
 
-    # Convert 'Vol.' column to numeric, forcing errors to NaN
-    df['Vol.'] = pd.to_numeric(df['Vol.'].str.replace(',', '').str.replace('M', '').str.replace('K', ''), errors='coerce')
-
     # Fill missing values in 'Vol.' column with its mean
-    df['Vol.'].fillna(df['Vol.'].mean(), inplace=True)
+    df['Vol.'] = df['Vol.'].fillna(df['Vol.'].mean())
     
     return df
 
